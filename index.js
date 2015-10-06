@@ -7,7 +7,7 @@ module.exports = function (globPath) {
 
     for (var i = 0; i < files.length; i++) {
         var entry = files[i];
-        entries[path.basename(entry, '.js')] = entry;
+        entries[path.basename(entry, path.extname(entry))] = entry;
     }
 
     return entries;

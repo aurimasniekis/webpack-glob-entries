@@ -1,15 +1,19 @@
-# webpack-glob-entries
-A small function which allows you to pass glob to generate entries hash object
+# webpack-glob-entries-extended
+A small function which allows you to pass glob to generate entries hash object.  Allows for passing of additional options to glob.sync().
 
 ## Instalation
 
 ```
-npm install --save-dev webpack-glob-entries
+npm install --save-dev webpack-glob-entries-extended
+
+or
+
+yarn add --save-dev webpack-glob-entries-extended
 ```
 
 ## Usage
 ```
-var glob_entries = require('webpack-glob-entries')
+const glob_entries = require('webpack-glob-entries-extended')
 
 module.exports = {
     entry: glob_entries('src/entries/**/*.js'),
@@ -19,15 +23,27 @@ module.exports = {
 };
 ```
 
+### Adding options
+
+The module uses `glob.sync` under the hood and allows you to pass through a set of options in the same way as using this methods directly.
+
+```
+const glob_entries = require('webpack-glob-entries-extended')
+
+module.exports = {
+    entry: glob_entries('**/*.js', '', { ignore: '**/node_modules/**' }),
+    output: {
+        filename: '[name].js'
+    }
+};
+```
+
+
 ## Tests
 
-  npm test
+  npm test | yarn test
 
 ## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style.
 Add unit tests for any new or changed functionality. Lint and test your code.
-
-## Release History
-
-* 1.0.0 Initial release

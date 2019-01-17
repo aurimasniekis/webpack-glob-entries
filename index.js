@@ -1,8 +1,9 @@
 var glob = require('glob'),
     path = require('path');
 
-module.exports = function (globPath, suffix) {
-    var files = glob.sync(globPath);
+module.exports = function (globPath, suffix, options = {}) {
+
+    var files = glob.sync(globPath, options);
     var entries = {};
 
     for (var i = 0; i < files.length; i++) {
